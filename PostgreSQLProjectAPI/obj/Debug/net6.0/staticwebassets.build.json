@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "9tdw+QrBtPu15waHAO3hM3LT0pKSmNLQq7VZixDsfF4=",
+  "Source": "PostgreSQLProjectAPI",
+  "BasePath": "_content/PostgreSQLProjectAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

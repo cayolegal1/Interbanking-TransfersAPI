@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreSQLProjectAPI", "PostgreSQLProjectAPI\PostgreSQLProjectAPI.csproj", "{B1AF51C4-FCA2-46C8-ADF8-4F523CFB4635}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Data", "API.Data\API.Data.csproj", "{619F1394-1094-41CC-BF3F-B9D40B7B1DC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Model", "API.Model\API.Model.csproj", "{0F056B7C-49BA-4764-AE66-A0BAFEFE4CA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1AF51C4-FCA2-46C8-ADF8-4F523CFB4635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AF51C4-FCA2-46C8-ADF8-4F523CFB4635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AF51C4-FCA2-46C8-ADF8-4F523CFB4635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AF51C4-FCA2-46C8-ADF8-4F523CFB4635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{619F1394-1094-41CC-BF3F-B9D40B7B1DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{619F1394-1094-41CC-BF3F-B9D40B7B1DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{619F1394-1094-41CC-BF3F-B9D40B7B1DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{619F1394-1094-41CC-BF3F-B9D40B7B1DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F056B7C-49BA-4764-AE66-A0BAFEFE4CA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F056B7C-49BA-4764-AE66-A0BAFEFE4CA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F056B7C-49BA-4764-AE66-A0BAFEFE4CA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F056B7C-49BA-4764-AE66-A0BAFEFE4CA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92625946-5623-4B11-871A-F88BAC79907E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\bin\Debug\net6.0\API.Data.deps.json
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\bin\Debug\net6.0\API.Data.dll
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\bin\Debug\net6.0\API.Data.pdb
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\bin\Debug\net6.0\API.Model.dll
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\bin\Debug\net6.0\API.Model.pdb
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\API.Data.csproj.AssemblyReference.cache
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\API.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\API.Data.AssemblyInfoInputs.cache
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\API.Data.AssemblyInfo.cs
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\API.Data.csproj.CoreCompileInputs.cache
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\API.Data.csproj.CopyComplete
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\API.Data.dll
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\refint\API.Data.dll
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\API.Data.pdb
+C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Data\obj\Debug\net6.0\ref\API.Data.dll
