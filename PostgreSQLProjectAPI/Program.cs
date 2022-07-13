@@ -1,6 +1,7 @@
 using API.Data;
 using API.Data.Repositories.Clients;
 using API.Data.Repositories.Banks;
+using API.Data.Repositories.Accounts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddSingleton(postgreSQLConnectionConfig);
 
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IBankRepository, BankRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
 var app = builder.Build();
 

@@ -14,8 +14,6 @@ namespace PostgreSQLProjectAPI.Controllers
             _bankRepository = bankRepository;
         }
 
-
-
         [HttpGet]
         public async Task<IActionResult> GetAllBanks()
         {
