@@ -44,7 +44,19 @@ namespace PostgreSQLProjectAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var newClient = await _accountRepository.createAccount(accountInfo);
+            Guid myGuid = Guid.NewGuid();
+
+            var newAccount = new Account()
+            {
+                id_cta = myGuid.ToString(),
+                num_cta = accountInfo.num_cta,
+                moneda = accountInfo.moneda,
+                saldo = accountInfo.saldo,
+                cedula_cliente = accountInfo.cedula_cliente,
+                cod_banco = accountInfo.cod_banco,
+            };
+
+            var newClient = await _accountRepository.createAccount(newAccount);
 
             return Created("Client created", accountInfo);
         }

@@ -66,7 +66,8 @@ namespace API.Data.Repositories.Clients
             //para hacer peticiones de tipo POST nos viene bien usar ExecuteAsync. Esto devuelve un int, si todo salió bien 
             //debemos revolver: response > 0. Ya que, devolverá 1 si se ejecuto correctamente la query o si al menos una 
             //fila fue afectada
-            var response = await db.ExecuteAsync(query, new { clientParam.cedula, clientParam.tipo_doc, clientParam.nombre_apellido });
+            var response = await db.ExecuteAsync(query, new { clientParam.cedula, clientParam.tipo_doc, clientParam.nombre_apellido, 
+            });
 
             return response > 0;
         }
