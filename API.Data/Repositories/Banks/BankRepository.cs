@@ -23,7 +23,7 @@ namespace API.Data.Repositories.Banks
             string query = @$"
              
              INSERT INTO bancos (codigo_banco, nombre_banco, direccion)
-             VALUES(codigo_banco, @nombre_banco, @direccion)
+             VALUES(@codigo_banco, @nombre_banco, @direccion)
              
              ";
 
