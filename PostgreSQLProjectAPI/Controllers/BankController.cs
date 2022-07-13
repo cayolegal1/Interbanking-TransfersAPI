@@ -24,10 +24,10 @@ namespace PostgreSQLProjectAPI.Controllers
 
 
 
-        [HttpGet("{codigo_banco}")]
-        public async Task<IActionResult> GetBankbyCode(string code)
+        [HttpGet("{codigo}")]
+        public async Task<IActionResult> GetBankbyCode(string codigo)
         {
-            return Ok(await _bankRepository.getBankbyCode(code));
+            return Ok(await _bankRepository.getBankbyCode(codigo));
         }
 
 
