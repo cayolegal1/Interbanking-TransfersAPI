@@ -2,6 +2,7 @@ using API.Data;
 using API.Data.Repositories.Clients;
 using API.Data.Repositories.Banks;
 using API.Data.Repositories.Accounts;
+using API.Data.Repositories.Transfers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddSingleton(postgreSQLConnectionConfig);
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IBankRepository, BankRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<ITransferRepository, TransferRepository>();
 
 var app = builder.Build();
 

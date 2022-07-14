@@ -88,17 +88,17 @@ namespace API.Data.Repositories.Clients
         }
 
 
-        public async Task<Client> getClientbyCedula(string cedula)
+        public async Task<Client> getClientbyCedula(string cedula_cliente)
         {
             var db = dbConnection();
 
             var query = @$"
             
-             SELECT * FROM clientes WHERE cedula = @cedula
+             SELECT * FROM clientes WHERE cedula = @cedula_cliente
             
             ";
 
-            var response = await db.QueryFirstOrDefaultAsync<Client>(query, new {  });
+            var response = await db.QueryFirstOrDefaultAsync<Client>(query, new {cedula_cliente});
 
             return response;
         }
