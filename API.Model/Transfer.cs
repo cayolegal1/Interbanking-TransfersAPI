@@ -12,6 +12,8 @@ namespace API.Model
 
         public string num_cta { get; set; } 
 
+        public string num_cta_destino { get; set; }
+
         public string cedula_cliente { get; set; }
 
         public DateTime fecha { get; set; }

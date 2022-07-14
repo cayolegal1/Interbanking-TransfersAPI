@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Npgsql;
 using API.Data.Repositories.Accounts;
+using API.Data.Repositories.Banks;
 using API.Model;
 
 namespace API.Data.Repositories.Accounts
@@ -27,10 +28,27 @@ namespace API.Data.Repositories.Accounts
             INSERT INTO cuentas(id_cta, num_cta, moneda, saldo, cedula_cliente, cod_banco)
             VALUES(@id_cta, @num_cta, @moneda, @saldo, @cedula_cliente, @cod_banco)
              ";
-            
+
+            var banks = new BankRepository();
+
+            var searchBanks = await banks.getBankbyCode(accountInfo.cod_banco);
+
+            if(searchBanks == null)
+            {
+                throw new Exception("Banco no se encuentra registrado");
+            }
+
+            var accountValidation = await searchAccountByNumber(accountInfo.num_cta);
+
+            if (accountValidation != null)
+            {
+                throw new Exception("Número de cuenta ya se encuentra registrado.");
+            }
+
 
             var response = await db.ExecuteAsync(query, new {accountInfo.id_cta, accountInfo.num_cta, accountInfo.moneda, accountInfo.saldo, accountInfo.cedula_cliente, accountInfo.cod_banco});
 
+            
             return response > 0;
         }
 
@@ -45,6 +63,11 @@ namespace API.Data.Repositories.Accounts
             ";
 
             var response = await db.ExecuteAsync(query, new { accountInfo.id_cta });
+
+            if(response <  1)
+            {
+                throw new Exception($"Cuenta {accountInfo.id_cta} no existe");
+            }
 
             return response > 0;
      
@@ -66,6 +89,12 @@ namespace API.Data.Repositories.Accounts
             var db = dbConnection();
             string query = @"SELECT * FROM cuentas WHERE id_cta = @id";
             var response = await db.QueryFirstOrDefaultAsync<Account>(query, new {id});
+
+            if(response == null)
+            {
+
+                throw new Exception("Cuenta no existente");
+            }
             return response;
         }
 
@@ -80,11 +109,36 @@ namespace API.Data.Repositories.Accounts
             saldo = @saldo
             WHERE id_cta = @id_cta";
 
+            var accountValidation = await searchAccountByNumber(accountInfo.num_cta);
+
+            var accountValidation2 = await getAccountByID(accountInfo.id_cta);
+
+            if(accountValidation2 == null )
+            {
+                throw new Exception("Cuenta no existente");
+            }
+
+            if(accountValidation != null)
+            {
+                throw new Exception("Cuenta ya se encuentra registrada");
+            }
+
             var response = await db.ExecuteAsync(
             query,
             new { accountInfo.num_cta, accountInfo.moneda, accountInfo.saldo, accountInfo.id_cta });
 
             return response > 0;
+        }
+
+        public async Task<Account>searchAccountByNumber(string num_cta)
+        {
+            var db = dbConnection();
+
+            string query = @"SELECT * FROM cuentas WHERE num_cta = @num_cta";
+
+            var response = await db.QueryFirstOrDefaultAsync<Account>(query, new { num_cta });
+
+            return response;
         }
 
     }

@@ -45,16 +45,7 @@ namespace PostgreSQLProjectAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            Guid guid = Guid.NewGuid();
-
-            var newBank = new Bank()
-            {
-                codigo_banco = guid.ToString(),
-                nombre_banco = bankInfo.nombre_banco,
-                direccion = bankInfo.direccion
-            };
-
-            var newClient = await _bankRepository.createBank(newBank);
+            var newClient = await _bankRepository.createBank(bankInfo);
 
             return Created("Client created", bankInfo);
         }

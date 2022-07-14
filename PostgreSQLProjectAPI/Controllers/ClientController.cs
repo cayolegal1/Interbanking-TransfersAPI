@@ -23,8 +23,14 @@ namespace PostgresWebAPI.Controllers
 
         [HttpGet("{cedula}")]
         public async Task<IActionResult> GetClientByCedula(string cedula)
-        {
+        {   
+            try
+            {
             return Ok(await _clientRepository.getClientbyCedula(cedula));
+            } catch (Exception ex)
+            {
+                return BadRequest($"Error en el servicio: {ex.Message}.\n{ex.StackTrace}.\n{ex.GetType()}");  
+            }
         }
 
 
@@ -42,9 +48,18 @@ namespace PostgresWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            try
+            {
+
             var newClient = await _clientRepository.createClient(clientParam);
 
             return Created("Client created", clientParam);
+
+            } catch(Exception ex)
+            {
+                return BadRequest($"Error en la creación de cliente: {ex.Message}.\n{ex.StackTrace}");
+            }
+
         }
 
         [HttpPut]
@@ -62,14 +77,15 @@ namespace PostgresWebAPI.Controllers
             }
 
             var newClient = await _clientRepository.updateClient(clientParam);
-
             return Created("Client information up to date", clientParam);
+
         }
 
         [HttpDelete("{cedula}")]
         public async Task<IActionResult> DeleteClient(string cedula)
-        {
-
+        {   
+            try
+            {
             if (cedula == null)
             {
                 return BadRequest();
@@ -78,6 +94,12 @@ namespace PostgresWebAPI.Controllers
             var newClient = await _clientRepository.deleteClient(new Client { cedula = cedula });
 
             return NoContent();
+
+            } catch(Exception ex)
+            {
+                return BadRequest($"Error en el servicio: {ex.Message}.\n{ex.StackTrace}");
+            }
+
         }
     }
 }

@@ -53,15 +53,24 @@ namespace API.Data.Repositories.Clients
         }
 
         public async Task<bool> createClient(Client clientParam)
-        {
+        {   
+         
+
             var db = dbConnection();
 
             string query = @$"
              
              INSERT INTO clientes (cedula, tipo_doc, nombre_apellido)
              VALUES(@cedula, @tipo_doc, @nombre_apellido)
-             
              ";
+
+            var filterClient = await getClientbyCedula(clientParam.cedula);
+
+            if(filterClient != null)
+            {
+                throw new Exception("Cliente ya se encuentra registrado");
+
+            }
 
             //para hacer peticiones de tipo POST nos viene bien usar ExecuteAsync. Esto devuelve un int, si todo salió bien 
             //debemos revolver: response > 0. Ya que, devolverá 1 si se ejecuto correctamente la query o si al menos una 
@@ -70,6 +79,7 @@ namespace API.Data.Repositories.Clients
             });
 
             return response > 0;
+
         }
 
         public async Task<bool> deleteClient(Client clientParam)
@@ -81,6 +91,13 @@ namespace API.Data.Repositories.Clients
              DELETE FROM clientes
              WHERE cedula = @cedula
              ";
+
+            var clientToDelete = await getClientbyCedula(clientParam.cedula);
+
+            if(clientToDelete == null)
+            {
+                throw new Exception("Cliente no se encuentra registrado");
+            }
 
             var response = await db.ExecuteAsync(query, new { clientParam.cedula });
 
@@ -99,6 +116,11 @@ namespace API.Data.Repositories.Clients
             ";
 
             var response = await db.QueryFirstOrDefaultAsync<Client>(query, new {cedula_cliente});
+
+            if(response == null)
+            {
+                throw new Exception("Cliente no existe");
+            }
 
             return response;
         }

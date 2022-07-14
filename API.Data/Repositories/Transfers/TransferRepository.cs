@@ -13,6 +13,8 @@ namespace API.Data.Repositories.Transfers
 {
     public class TransferRepository : ITransferRepository
     {
+
+
         protected NpgsqlConnection dbConnection()
         {
             return new NpgsqlConnection("Server = 127.0.0.1; Port = 5432; Database = interbanking_transfers;" +
@@ -43,7 +45,7 @@ namespace API.Data.Repositories.Transfers
         {
 
             var db = dbConnection();
-            //Account account = accountInfo.
+
             string id_cta = accountInfo.num_cta;
 
             double enoughMoney = await HasEnoughMoney(id_cta);
@@ -61,8 +63,8 @@ namespace API.Data.Repositories.Transfers
             string query = @"
 
              INSERT INTO transferencias
-             (id_transaccion, num_cta, cedula_cliente, fecha, monto, estado, cod_banco_origen, cod_banco_destino)
-             VALUES(@id_transaccion, @num_cta, @cedula_cliente, @fecha, @monto, @estado, @cod_banco_origen, @cod_banco_destino)
+             (id_transaccion, num_cta, cedula_cliente, fecha, monto, estado, cod_banco_origen, cod_banco_destino, @num_cta_destino)
+             VALUES(@id_transaccion, @num_cta, @cedula_cliente, @fecha, @monto, @estado, @cod_banco_origen, @cod_banco_destino, @num_cta_destino)
             ";
 
 
@@ -76,7 +78,8 @@ namespace API.Data.Repositories.Transfers
                 accountInfo.monto,
                 accountInfo.estado,
                 accountInfo.cod_banco_origen,
-                accountInfo.cod_banco_destino
+                accountInfo.cod_banco_destino,
+                accountInfo.num_cta_destino
             });
             return response > 0;
         }

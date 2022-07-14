@@ -25,8 +25,17 @@ namespace PostgreSQLProjectAPI.Controllers
 
         [HttpGet("{id_cta}")]
         public async Task<IActionResult> GetAccountByID(string id_cta)
-        {
+        {   
+            try
+            {
             return Ok(await _accountRepository.getAccountByID(id_cta));
+
+            } catch (Exception ex)
+            {
+
+            return BadRequest("Error en el servicio: " + ex.Message + "\n" + ex.StackTrace);
+
+            }
         }
 
 
@@ -44,6 +53,9 @@ namespace PostgreSQLProjectAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            try
+            {
+
             Guid myGuid = Guid.NewGuid();
 
             var newAccount = new Account()
@@ -59,12 +71,19 @@ namespace PostgreSQLProjectAPI.Controllers
             var newClient = await _accountRepository.createAccount(newAccount);
 
             return Created("Client created", accountInfo);
+
+            } catch(Exception ex)
+            {
+                return BadRequest("Error en el servicio: " + ex.Message + "\n" + ex.StackTrace);
+            }
         }
 
 
         [HttpPut]
         public async Task<IActionResult> UpdateAccountInfo([FromBody] Account accountInfo)
         {
+            try
+            {
 
             if (accountInfo == null)
             {
@@ -79,12 +98,18 @@ namespace PostgreSQLProjectAPI.Controllers
             var newClient = await _accountRepository.updateAccount(accountInfo);
 
             return Created("Client information up to date", accountInfo);
+
+            } catch(Exception ex)
+            {
+                return BadRequest($"Error en el servicio: {ex.Message}.\n{ex.StackTrace}.");
+            }
         }
 
         [HttpDelete("{id_cta}")]
         public async Task<IActionResult> DeleteAccount(string id_cta)
         {
-
+            try
+            {
             if (id_cta == null)
             {
                 return BadRequest();
@@ -93,6 +118,11 @@ namespace PostgreSQLProjectAPI.Controllers
             var newClient = await _accountRepository.deleteAccount(new Account { id_cta = id_cta });
 
             return NoContent();
+
+            } catch(Exception ex)
+            {
+                return BadRequest($"Error en el servicio: {ex.Message}.\n{ex.StackTrace}.");
+            }
         }
     }
 }

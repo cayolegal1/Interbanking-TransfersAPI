@@ -16,6 +16,7 @@ namespace API.Data.Repositories.Banks
         {
             return new NpgsqlConnection("Server = 127.0.0.1; Port = 5432; Database = interbanking_transfers; User Id = postgres; Password = hola1606;");
         }
+
         public async Task<bool> createBank(Bank bankInfo)
         {
             var db = dbConnection();
@@ -27,11 +28,20 @@ namespace API.Data.Repositories.Banks
              
              ";
 
+            var searchBankCode = await getBankbyCode(bankInfo.codigo_banco);
+
+            if(searchBankCode != null)
+            {
+                throw new Exception("Banco ya se encuentra registrado");
+            }
+
             var response = await db.ExecuteAsync(query, 
             new { bankInfo.nombre_banco, bankInfo.direccion, bankInfo.codigo_banco });
 
             return response > 0;
         }
+
+
 
         public async Task<bool> deleteBank(Bank bankInfo)
         {
@@ -44,10 +54,19 @@ namespace API.Data.Repositories.Banks
 
             ";
 
+            var searchBankCode = await getBankbyCode(bankInfo.codigo_banco);
+
+            if(searchBankCode == null)
+            {
+                throw new Exception("Banco no se encuentra registrado");
+            }
+
             var response = await db.ExecuteAsync(query, new {bankInfo.codigo_banco});
 
             return response > 0;
         }
+
+
 
         public async Task<IEnumerable<Bank>> getAllBanks()
         {
@@ -62,6 +81,8 @@ namespace API.Data.Repositories.Banks
             return await db.QueryAsync<Bank>(query);
         }
 
+
+
         public async Task<Bank> getBankbyCode(string codigo_banco)
         {
             var db = dbConnection();
@@ -72,10 +93,18 @@ namespace API.Data.Repositories.Banks
             
             ";
 
+
             var response = await db.QueryFirstOrDefaultAsync<Bank>(query, new {codigo_banco});
+
+            if(response == null)
+            {
+                throw new Exception("Banco no existe");
+            }
 
             return response;
         }
+
+
 
         public async Task<bool> updateBank(Bank bankInfo)
         {
