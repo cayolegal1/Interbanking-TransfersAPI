@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj",
+      "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj",
       "projectName": "API.Model",
-      "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj",
+      "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj",
       "packagesPath": "C:\\Users\\clegal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\obj\\",
+      "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\clegal\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj": {}
+    "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Data\\API.Data.csproj": {
+    "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Data\\API.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Data\\API.Data.csproj",
+        "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Data\\API.Data.csproj",
         "projectName": "API.Data",
-        "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Data\\API.Data.csproj",
+        "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Data\\API.Data.csproj",
         "packagesPath": "C:\\Users\\clegal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Data\\obj\\",
+        "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\clegal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj": {
-                "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj"
+              "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj": {
+                "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj"
               }
             }
           }
@@ -47,6 +47,10 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.0.123, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.1.0, )"
             },
             "Npgsql": {
               "target": "Package",
@@ -72,14 +76,14 @@
         }
       }
     },
-    "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj": {
+    "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj",
+        "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj",
         "projectName": "API.Model",
-        "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj",
+        "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj",
         "packagesPath": "C:\\Users\\clegal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\obj\\",
+        "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\clegal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -126,14 +130,14 @@
         }
       }
     },
-    "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj": {
+    "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj",
+        "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj",
         "projectName": "PostgreSQLProjectAPI",
-        "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj",
+        "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj",
         "packagesPath": "C:\\Users\\clegal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI\\obj\\",
+        "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\PostgreSQLProjectAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\clegal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -150,11 +154,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Data\\API.Data.csproj": {
-                "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Data\\API.Data.csproj"
+              "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Data\\API.Data.csproj": {
+                "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Data\\API.Data.csproj"
               },
-              "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj": {
-                "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj"
+              "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj": {
+                "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj"
               }
             }
           }
@@ -169,6 +173,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"

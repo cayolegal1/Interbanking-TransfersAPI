@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N464cZzjCMrL+o3f4LMce+FZLYkXJn7919F65jDT3kNI0BdMJxsXDDzDscaNpTnRXQt9wccacba0O9RrJrzaVg==",
+  "dgSpecHash": "bh/rOw40EzIe8eqZBBxTD3qKeBdJVSEX192SqnlOEZRP1Qzht1iKUdL6Wgjl9QniNKJ1SCqudVyioSGHyWv0bA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj",
+  "projectFilePath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

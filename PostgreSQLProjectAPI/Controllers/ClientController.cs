@@ -1,6 +1,7 @@
 ﻿using API.Model;
 using Microsoft.AspNetCore.Mvc;
 using API.Data.Repositories.Clients;
+using FluentValidation;
 
 namespace PostgresWebAPI.Controllers
 {
@@ -10,6 +11,8 @@ namespace PostgresWebAPI.Controllers
     public class ClientsController : Controller
     {
         private readonly IClientRepository _clientRepository;
+
+        ClientValidator validator = new ClientValidator();
         public ClientsController(IClientRepository clientRepository)
         {
             _clientRepository = clientRepository;
@@ -25,9 +28,19 @@ namespace PostgresWebAPI.Controllers
         public async Task<IActionResult> GetClientByCedula(string cedula)
         {   
             try
-            {
-            return Ok(await _clientRepository.getClientbyCedula(cedula));
+            {   
+
+                var response = await _clientRepository.getClientbyCedula(cedula);
+
+                if (response == null)
+                {
+                    throw new Exception("Cliente no existe");
+                }
+                return Ok(response);
+
+
             } catch (Exception ex)
+
             {
                 return BadRequest($"Error en el servicio: {ex.Message}.\n{ex.StackTrace}.\n{ex.GetType()}");  
             }
@@ -47,6 +60,18 @@ namespace PostgresWebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            
+            Client clientIsValid = new Client()
+            {
+                cedula = clientParam.cedula,
+                tipo_doc = clientParam.tipo_doc,
+                nombre_apellido = clientParam.nombre_apellido
+            };
+
+
+            validator.ValidateAndThrow(clientIsValid);
+
 
             try
             {
@@ -76,8 +101,27 @@ namespace PostgresWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var newClient = await _clientRepository.updateClient(clientParam);
-            return Created("Client information up to date", clientParam);
+            Client clientIsValid = new Client()
+            {
+                cedula = clientParam.cedula,
+                tipo_doc = clientParam.tipo_doc,
+                nombre_apellido = clientParam.nombre_apellido
+            };
+
+
+            validator.ValidateAndThrow(clientIsValid);
+
+
+            try
+            {
+                var newClient = await _clientRepository.updateClient(clientParam);
+                return Created("Client information up to date", clientParam);
+
+            } catch (Exception ex) 
+
+            {
+                return BadRequest($"Error en el servicio: {ex.Message}"); 
+            }
 
         }
 

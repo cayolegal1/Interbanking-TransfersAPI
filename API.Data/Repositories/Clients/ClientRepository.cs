@@ -1,6 +1,8 @@
 ﻿using API.Model;
 using Dapper;
 using Npgsql;
+using FluentValidation.Results;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +74,7 @@ namespace API.Data.Repositories.Clients
 
             }
 
+            
             //para hacer peticiones de tipo POST nos viene bien usar ExecuteAsync. Esto devuelve un int, si todo salió bien 
             //debemos revolver: response > 0. Ya que, devolverá 1 si se ejecuto correctamente la query o si al menos una 
             //fila fue afectada
@@ -116,11 +119,6 @@ namespace API.Data.Repositories.Clients
             ";
 
             var response = await db.QueryFirstOrDefaultAsync<Client>(query, new {cedula_cliente});
-
-            if(response == null)
-            {
-                throw new Exception("Cliente no existe");
-            }
 
             return response;
         }

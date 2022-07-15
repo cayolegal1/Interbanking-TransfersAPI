@@ -11,6 +11,15 @@
           "lib/net5.0/Dapper.dll": {}
         }
       },
+      "FluentValidation/11.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/FluentValidation.dll": {}
+        }
+      },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
         "type": "package",
         "build": {
@@ -112,6 +121,7 @@
         "dependencies": {
           "API.Model": "1.0.0",
           "Dapper": "2.0.123",
+          "FluentValidation": "11.1.0",
           "Npgsql": "6.0.5"
         },
         "compile": {
@@ -150,6 +160,27 @@
         "lib/net5.0/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "FluentValidation/11.1.0": {
+      "sha512": "Ld7w+2jOmnhQqFkngEGuEWTRa5j6u4Xzli7jKxRtbA5PtuHHcpin01qxvxYL0LomeJuzRMGAOURu2rKONdjKQA==",
+      "type": "package",
+      "path": "fluentvalidation/11.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.1.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
       ]
     },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
@@ -340,6 +371,7 @@
     "net6.0": [
       "API.Data >= 1.0.0",
       "API.Model >= 1.0.0",
+      "FluentValidation >= 11.1.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -349,11 +381,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj",
+      "projectUniqueName": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj",
       "projectName": "PostgreSQLProjectAPI",
-      "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj",
+      "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI.csproj",
       "packagesPath": "C:\\Users\\clegal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\PostgreSQLProjectAPI\\obj\\",
+      "outputPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\PostgreSQLProjectAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\clegal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -370,11 +402,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Data\\API.Data.csproj": {
-              "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Data\\API.Data.csproj"
+            "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Data\\API.Data.csproj": {
+              "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Data\\API.Data.csproj"
             },
-            "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj": {
-              "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\PostgreSQLProjectAPI\\API.Model\\API.Model.csproj"
+            "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj": {
+              "projectPath": "C:\\Users\\clegal\\Documents\\TestBackend\\FluentValidator\\API.Model\\API.Model.csproj"
             }
           }
         }
@@ -389,6 +421,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[11.1.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.2.3, )"

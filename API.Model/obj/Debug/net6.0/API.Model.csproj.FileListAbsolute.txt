@@ -10,3 +10,15 @@ C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Model\obj\Debug\n
 C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Model\obj\Debug\net6.0\refint\API.Model.dll
 C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Model\obj\Debug\net6.0\API.Model.pdb
 C:\Users\clegal\Documents\TestBackend\PostgreSQLProjectAPI\API.Model\obj\Debug\net6.0\ref\API.Model.dll
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\bin\Debug\net6.0\API.Model.deps.json
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\bin\Debug\net6.0\API.Model.dll
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\bin\Debug\net6.0\API.Model.pdb
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\API.Model.csproj.AssemblyReference.cache
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\API.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\API.Model.AssemblyInfoInputs.cache
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\API.Model.AssemblyInfo.cs
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\API.Model.csproj.CoreCompileInputs.cache
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\API.Model.dll
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\refint\API.Model.dll
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\API.Model.pdb
+C:\Users\clegal\Documents\TestBackend\FluentValidator\API.Model\obj\Debug\net6.0\ref\API.Model.dll
