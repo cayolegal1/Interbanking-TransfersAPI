@@ -17,6 +17,29 @@ namespace PostgreSQLProjectAPI.Controllers
             _transferRepository = transferRepository;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> getAllTransfers()
+        {
+            var request = await _transferRepository.GetAllTransfersData();
+
+            return Ok(request);
+        }
+
+        [HttpGet("{num_cta}/enviados")]
+        public async Task<IActionResult>getSendedTransfersDataByAccountNumber(string num_cta)
+        {
+            var request = await _transferRepository.GetSendedTransfersData(num_cta);
+
+            return Ok(request);
+        }
+        [HttpGet("{num_cta}/recibidos")]
+        public async Task<IActionResult>getReceivedTransfersDataByAccountNumber(string num_cta)
+        {
+            var request = await _transferRepository.GetReceivedTransfersData(num_cta);
+
+            return Ok(request);
+        }
+
         [HttpPost]
         public async Task<IActionResult> MakeTransfer([FromBody] Transfer transferInfo)
         {
@@ -51,5 +74,46 @@ namespace PostgreSQLProjectAPI.Controllers
 
             return Created("Done", transferInfo);
         }
+
+
+        [HttpPatch]
+        public async Task<IActionResult> changeTransferState([FromBody] Transfer transferInfo)
+        {   
+            try
+            {
+            var request = await _transferRepository.updateTransferState(transferInfo);
+
+            return Created("Done", transferInfo);
+
+            } catch(Exception ex)
+            {
+                return BadRequest($"Error en el servicio. {ex.Message}.\n{ex.StackTrace}");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> getTransferDataByID(string id)
+        {   
+            try
+            {
+            var request = await _transferRepository.GetTransferDataByID(id);
+
+            return Ok(request);
+
+            } catch(Exception ex)
+            {
+                return BadRequest($"Error en el servicio: {ex.Message}.\n{ex.StackTrace}");
+                
+            }
+        }
+
+        [HttpDelete("{id_transaccion}")]
+        public async Task<IActionResult> deleteTransfer(string id_transaccion)
+        {
+            var requestDelete = await _transferRepository.deleteTransferByID(id_transaccion);
+            return Ok(requestDelete);
+        }
+        
+
     }
 }

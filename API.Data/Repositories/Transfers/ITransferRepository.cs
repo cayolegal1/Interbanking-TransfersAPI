@@ -11,10 +11,20 @@ namespace API.Data.Repositories.Transfers
     { 
         Task<bool> MakeTransfer(Transfer accountInfo);
 
-        Task<IEnumerable<Transfer>> GetAllTransfersData();
+        Task<bool> updateTransferState(Transfer data);
+
+        Task<bool> deleteTransferByID(string id_transaccion);
+
 
         Task<Transfer> GetTransferDataByID(string id_transaccion);
 
-        Task<Transfer> ChangeTransferState(string code);
+        Task<IEnumerable<Transfer>> GetAllTransfersData();
+
+        Task<IEnumerable<Transfer>> GetSendedTransfersData(string num_cta);
+
+        Task<IEnumerable<Transfer>> GetReceivedTransfersData(string num_cta_destino);
+
+
+
     }
 }
