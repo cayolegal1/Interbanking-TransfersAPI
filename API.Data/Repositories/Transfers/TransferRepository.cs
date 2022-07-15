@@ -23,7 +23,7 @@ namespace API.Data.Repositories.Transfers
         }
 
 
-        public async Task<double> HasEnoughMoney(string id_cta)
+        public async Task<double> HasEnoughMoney(string num_cta)
         {
 
             var db = dbConnection();
@@ -31,11 +31,11 @@ namespace API.Data.Repositories.Transfers
             string query = @$"
 
 
-            SELECT saldo FROM cuentas WHERE id_cta = @id_cta
+            SELECT saldo FROM cuentas WHERE num_cta = @num_cta
 
             ";
 
-            var response = await db.QueryFirstOrDefaultAsync<Account>(query, new { id_cta });
+            var response = await db.QueryFirstOrDefaultAsync<Account>(query, new { num_cta });
 
             return response.saldo;
 
@@ -46,9 +46,7 @@ namespace API.Data.Repositories.Transfers
 
             var db = dbConnection();
 
-            string id_cta = accountInfo.num_cta;
-
-            double enoughMoney = await HasEnoughMoney(id_cta);
+            double enoughMoney = await HasEnoughMoney(accountInfo.num_cta);
 
             if (enoughMoney < accountInfo.monto)
             {
@@ -63,9 +61,8 @@ namespace API.Data.Repositories.Transfers
             string query = @"
 
              INSERT INTO transferencias
-             (id_transaccion, num_cta, cedula_cliente, fecha, monto, estado, cod_banco_origen, cod_banco_destino, @num_cta_destino)
-             VALUES(@id_transaccion, @num_cta, @cedula_cliente, @fecha, @monto, @estado, @cod_banco_origen, @cod_banco_destino, @num_cta_destino)
-            ";
+             (id_transaccion, num_cta, num_cta_destino, cedula_cliente, fecha, monto, estado, cod_banco_origen, cod_banco_destino)
+             VALUES(@id_transaccion, @num_cta, @num_cta_destino, @cedula_cliente, @fecha, @monto, @estado, @cod_banco_origen, @cod_banco_destino)";
 
 
             var response = await db.ExecuteAsync(query,
@@ -73,16 +70,28 @@ namespace API.Data.Repositories.Transfers
             {
                 accountInfo.id_transaccion,
                 accountInfo.num_cta,
+                accountInfo.num_cta_destino,
                 accountInfo.cedula_cliente,
                 accountInfo.fecha,
                 accountInfo.monto,
                 accountInfo.estado,
                 accountInfo.cod_banco_origen,
-                accountInfo.cod_banco_destino,
-                accountInfo.num_cta_destino
+                accountInfo.cod_banco_destino
             });
-            return response > 0;
+
+            if(response != null)
+            {
+                string originAccountMoneyUpdateQuery =@"UPDATE cuentas SET saldo = saldo - @monto WHERE num_cta = @num_cta";
+
+                await db.ExecuteAsync(originAccountMoneyUpdateQuery, new { accountInfo.monto, accountInfo.num_cta } );
+
+                string destinyAccountMoneyUpdateQuery = @"UPDATE cuentas SET saldo = saldo + @monto WHERE num_cta = @num_cta_destino";
+
+                await db.ExecuteAsync(destinyAccountMoneyUpdateQuery, new { accountInfo.monto, accountInfo.num_cta_destino });
+            }
+            return response > 0;    
         }
+
 
         public async Task<Transfer> GetTransferDataByID(string id_transaccion)
         {

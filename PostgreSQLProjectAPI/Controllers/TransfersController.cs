@@ -31,7 +31,23 @@ namespace PostgreSQLProjectAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var newClient = await _transferRepository.MakeTransfer(transferInfo);
+            Guid guid = Guid.NewGuid();
+
+            var newTransfer = new Transfer()
+            {
+                id_transaccion = guid.ToString(),
+                num_cta = transferInfo.num_cta,
+                cedula_cliente = transferInfo.cedula_cliente,
+                fecha = transferInfo.fecha,
+                monto = transferInfo.monto,
+                estado = transferInfo.estado,
+                cod_banco_origen = transferInfo.cod_banco_origen,   
+                cod_banco_destino = transferInfo.cod_banco_destino,
+                num_cta_destino = transferInfo.num_cta_destino,
+
+            };
+
+            var newClient = await _transferRepository.MakeTransfer(newTransfer);
 
             return Created("Done", transferInfo);
         }
