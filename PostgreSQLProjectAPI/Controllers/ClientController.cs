@@ -18,7 +18,7 @@ namespace PostgresWebAPI.Controllers
             _clientRepository = clientRepository;
         }
 
-        [HttpGet]
+        [HttpGet("{x}")]
         public async Task<IActionResult> GetAllClients()
         {
             return Ok(await _clientRepository.getAllClients());

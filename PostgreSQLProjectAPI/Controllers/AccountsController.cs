@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using API.Data.Repositories.Accounts;
 using API.Model;
+using FluentValidation;
 
 namespace PostgreSQLProjectAPI.Controllers
 {
@@ -10,6 +11,8 @@ namespace PostgreSQLProjectAPI.Controllers
     public class AccountsController : Controller
     {
         private readonly IAccountRepository _accountRepository;
+
+        AccountValidator validator = new AccountValidator();
         public AccountsController(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
@@ -53,9 +56,6 @@ namespace PostgreSQLProjectAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
-            {
-
             Guid myGuid = Guid.NewGuid();
 
             var newAccount = new Account()
@@ -67,6 +67,11 @@ namespace PostgreSQLProjectAPI.Controllers
                 cedula_cliente = accountInfo.cedula_cliente,
                 cod_banco = accountInfo.cod_banco,
             };
+
+            validator.ValidateAndThrow(newAccount);
+
+            try
+            {
 
             var newClient = await _accountRepository.createAccount(newAccount);
 
@@ -82,6 +87,9 @@ namespace PostgreSQLProjectAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateAccountInfo([FromBody] Account accountInfo)
         {
+
+            validator.ValidateAndThrow(accountInfo);
+
             try
             {
 

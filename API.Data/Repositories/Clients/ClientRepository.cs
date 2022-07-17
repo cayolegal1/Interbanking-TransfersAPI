@@ -42,9 +42,9 @@ namespace API.Data.Repositories.Clients
             var db = dbConnection();
 
             //generamos la consulta. El @ antes de las comillas nos sirve para hacer templates strings
-            string query = @"
+            string query = $@"
             
-             SELECT * FROM clientes
+             SELECT * FROM clientes 
             
             ";
 
