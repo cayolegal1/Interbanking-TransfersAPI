@@ -28,6 +28,13 @@ namespace PostgreSQLProjectAPI.Controllers
         [HttpGet("{codigo}")]
         public async Task<IActionResult> GetBankbyCode(string codigo)
         {
+            var request = await _bankRepository.getBankbyCode(codigo);
+
+            if (request == null)
+            {
+                throw new Exception("Banco no existe");
+            }
+
             return Ok(await _bankRepository.getBankbyCode(codigo));
         }
 
@@ -55,11 +62,27 @@ namespace PostgreSQLProjectAPI.Controllers
                 direccion = bankInfo.direccion
             };
 
-            bankValidator.ValidateAndThrow(bankValidation);
+            var validator = bankValidator.Validate(bankValidation);
 
-            var newClient = await _bankRepository.createBank(bankInfo);
+            if(!validator.IsValid)
+            {
+               foreach(var error in validator.Errors)
+               {   
+                 return BadRequest($"Error en el servicio: {error.ErrorMessage}.");
+               }
+            }
 
-            return Created("Client created", bankInfo);
+            try
+            {
+                var newClient = await _bankRepository.createBank(bankInfo);
+
+                return Created("Client created", bankInfo);
+
+            }catch(Exception ex)
+            {
+                return BadRequest($"{ex.Message}.\n {ex.StackTrace}");
+            }
+
         }
 
 
@@ -84,7 +107,15 @@ namespace PostgreSQLProjectAPI.Controllers
                 direccion = bankInfo.direccion
             };
 
-            bankValidator.ValidateAndThrow(bankValidation);
+            var validator = bankValidator.Validate(bankValidation);
+
+            if (!validator.IsValid)
+            {
+                foreach (var error in validator.Errors)
+                {
+                    return BadRequest($"Error en el servicio: {error.ErrorMessage}.");
+                }
+            }
 
             var newClient = await _bankRepository.updateBank(bankInfo);
 

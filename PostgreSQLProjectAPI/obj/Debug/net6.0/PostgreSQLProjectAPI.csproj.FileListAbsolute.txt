@@ -65,3 +65,7 @@ C:\Users\clegal\Documents\TestBackend\FluentValidator\PostgreSQLProjectAPI\obj\D
 C:\Users\clegal\Documents\TestBackend\FluentValidator\PostgreSQLProjectAPI\obj\Debug\net6.0\PostgreSQLProjectAPI.pdb
 C:\Users\clegal\Documents\TestBackend\FluentValidator\PostgreSQLProjectAPI\obj\Debug\net6.0\PostgreSQLProjectAPI.genruntimeconfig.cache
 C:\Users\clegal\Documents\TestBackend\FluentValidator\PostgreSQLProjectAPI\obj\Debug\net6.0\ref\PostgreSQLProjectAPI.dll
+C:\Users\clegal\Documents\TestBackend\FluentValidator\PostgreSQLProjectAPI\bin\Debug\net6.0\CloudrailSI.dll
+C:\Users\clegal\Documents\TestBackend\FluentValidator\PostgreSQLProjectAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\clegal\Documents\TestBackend\FluentValidator\PostgreSQLProjectAPI\bin\Debug\net6.0\OpenSSL.PrivateKeyDecoder.dll
+C:\Users\clegal\Documents\TestBackend\FluentValidator\PostgreSQLProjectAPI\bin\Debug\net6.0\OpenSSL.X509Certificate2.Provider.dll

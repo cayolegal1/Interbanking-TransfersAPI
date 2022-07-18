@@ -1,0 +1,48 @@
+﻿-- Table: public.bancos
+
+-- DROP TABLE IF EXISTS public.bancos;
+
+CREATE TABLE IF NOT EXISTS public.bancos
+(
+    codigo_banco character varying(40) COLLATE pg_catalog."default" NOT NULL,
+    nombre_banco character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    direccion character varying(40) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT banco_pkey PRIMARY KEY (codigo_banco)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.bancos
+    OWNER to postgres;
+
+
+
+
+-------------------------------DATA--------------------------------------------
+
+INSERT INTO public.bancos (codigo_banco,nombre_banco,direccion) VALUES
+	 ('BNFAPYPA','BANCO NACIONAL DE FOMENTO','luque'),
+	 ('BNITPYPA','BANCO ATLAS SA.','ciudad del este'),
+	 ('BSUDPYPX','SUDAMERIS BANK SAECA','lambare'),
+	 ('BRASPYPX','BANCO DE BRASIL SA','pedro juan'),
+	 ('AMAMPYPA','BANCO BASA SA','curuguaty'),
+	 ('FAMIPYPA','BANCO FAMILIAR SAECA','villa elisa'),
+	 ('NACNPYPA','BANCO DE LA NACION ARGENTINA','colon'),
+	 ('HSBCPYPX','HSBC BANK PARAGUAY SA','ayolas'),
+	 ('BCPAPYPX','BANCO CENTRAL DEL PARAGUAY','san lorenzo'),
+	 ('BCOPPYPA','BANCOP - BANCO PARA LA COMERCIALIZACION Y LA PRODUCCION SA','caacupé');
+INSERT INTO public.bancos (codigo_banco,nombre_banco,direccion) VALUES
+	 ('RGSAPYPE','BANCO REGIONAL SAECA','ñemby'),
+	 ('CITIUS33ASR','CITIBANK NA','concepcion'),
+	 ('UBBRPYPX','BANCO ITAU PARAGUAY SA','capiata'),
+	 ('VISCPYPA','VISION BANCO SAECA','san bernardino'),
+	 ('INFAPYPA','INTERFISA BANCO','chaco'),
+	 ('BCNAPYPA','BANCO CONTINENTAL SAECA','fernando de la mora'),
+	 ('BGNBPYPX','BANCO GNB','villamorra'),
+	 ('BBVAPYPA','GNB FUSIÓN (EX BBVA)','villamorra-centro'),
+	 ('BISAPYPE','BANCO RIO SAECA','mayor delgado'),
+	 ('BCBRBRDF','BANCO CENTRAL DE BRASIL','brasilia');
+INSERT INTO public.bancos (codigo_banco,nombre_banco,direccion) VALUES
+	 ('BCRAARBA','BANCO CENTRAL DE LA  REP. ARGENTINA','montevideo'),
+	 ('CBCUUYM0','BANCO CENTRAL DEL URUGUAY','ñeembucu'),
+	 ('IIFAPYPA','INTERFISA BANCO','central');

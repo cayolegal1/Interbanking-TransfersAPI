@@ -29,6 +29,13 @@ namespace PostgreSQLProjectAPI.Controllers
         [HttpGet("{id_cta}")]
         public async Task<IActionResult> GetAccountByID(string id_cta)
         {   
+            var request = await _accountRepository.getAccountByID(id_cta);
+
+            if(request == null)
+            {
+                return BadRequest("Cliente no existe");
+            }
+
             try
             {
             return Ok(await _accountRepository.getAccountByID(id_cta));
@@ -68,7 +75,16 @@ namespace PostgreSQLProjectAPI.Controllers
                 cod_banco = accountInfo.cod_banco,
             };
 
-            validator.ValidateAndThrow(newAccount);
+            var createValidator = validator.Validate(newAccount);
+
+            if (!createValidator.IsValid)
+            {
+                foreach (var error in createValidator.Errors)
+                {
+                    return BadRequest($"Error en el servicio: {error.ErrorMessage}.");
+                }
+            }
+       
 
             try
             {
@@ -87,9 +103,7 @@ namespace PostgreSQLProjectAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateAccountInfo([FromBody] Account accountInfo)
         {
-
-            validator.ValidateAndThrow(accountInfo);
-
+  
             try
             {
 
@@ -102,6 +116,17 @@ namespace PostgreSQLProjectAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            var request = validator.Validate(accountInfo);
+
+            if (!request.IsValid)
+            {
+                foreach (var error in request.Errors)
+                {
+                    return BadRequest($"Error en el servicio: {error.ErrorMessage}.");
+                }
+            }
+
 
             var newClient = await _accountRepository.updateAccount(accountInfo);
 

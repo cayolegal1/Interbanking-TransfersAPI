@@ -1,0 +1,30 @@
+﻿-- Table: public.clientes
+
+-- DROP TABLE IF EXISTS public.clientes;
+
+CREATE TABLE IF NOT EXISTS public.clientes
+(
+    cedula character varying(15) COLLATE pg_catalog."default" NOT NULL,
+    tipo_doc character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    nombre_apellido character varying(30) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT cliente_pkey PRIMARY KEY (cedula)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.clientes
+    OWNER to postgres;
+
+
+
+----------------------------------------DATA----------------------------------------
+
+INSERT INTO public.clientes (cedula,tipo_doc,nombre_apellido) VALUES
+('4800003','cedula','cayo legal'),
+('4800001','ci','cayo legal'),
+('4800005','cedula','clegal'),
+('8866222','ci','clñ'),
+('4800004','ci','renzo legal'),
+('893211','ci','kakak'),
+('4995119','cedula','gonzalo cubilla'),
+('4800011','cedula','cayo legal');

@@ -74,7 +74,16 @@ namespace PostgreSQLProjectAPI.Controllers
 
             };
 
-            validator.ValidateAndThrow(newTransfer);
+
+            var transferValidator = validator.Validate(newTransfer);
+
+            if (!transferValidator.IsValid)
+            {
+                foreach (var error in transferValidator.Errors)
+                {
+                    return BadRequest($"Error en el servicio: {error.ErrorMessage}. Campo: {error.PropertyName}");
+                }
+            }
 
             var newClient = await _transferRepository.MakeTransfer(newTransfer);
 
@@ -92,7 +101,15 @@ namespace PostgreSQLProjectAPI.Controllers
 
             };
 
-            updateValidator.ValidateAndThrow(transferInfo);
+            var transferValidator = updateValidator.Validate(transferInfo);
+
+            if (!transferValidator.IsValid)
+            {
+                foreach (var error in transferValidator.Errors)
+                {
+                    return BadRequest($"Error en el servicio: {error.ErrorMessage}. Campo: {error.PropertyName}");
+                }
+            }
 
             try
             {

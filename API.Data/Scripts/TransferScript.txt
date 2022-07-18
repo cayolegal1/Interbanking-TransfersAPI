@@ -1,0 +1,52 @@
+﻿-- Table: public.transferencias
+
+-- DROP TABLE IF EXISTS public.transferencias;
+
+CREATE TABLE IF NOT EXISTS public.transferencias
+(
+    id_transaccion character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    num_cta character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    cedula_cliente character varying(15) COLLATE pg_catalog."default" NOT NULL,
+    fecha date NOT NULL,
+    monto numeric NOT NULL,
+    estado character varying(15) COLLATE pg_catalog."default" NOT NULL,
+    cod_banco_origen text COLLATE pg_catalog."default",
+    cod_banco_destino text COLLATE pg_catalog."default",
+    num_cta_destino character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT transferencias_pkey PRIMARY KEY (id_transaccion),
+    CONSTRAINT cedula_cliente FOREIGN KEY (cedula_cliente)
+        REFERENCES public.clientes (cedula) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT cod_banco_destino FOREIGN KEY (cod_banco_destino)
+        REFERENCES public.bancos (codigo_banco) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT cod_banco_origen FOREIGN KEY (cod_banco_origen)
+        REFERENCES public.bancos (codigo_banco) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT num_cta_destino FOREIGN KEY (num_cta_destino)
+        REFERENCES public.cuentas (num_cta) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT num_cta_origen FOREIGN KEY (num_cta)
+        REFERENCES public.cuentas (num_cta) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.transferencias
+    OWNER to postgres;
+
+
+--------------------------------------------DATA--------------------------------------
+
+INSERT INTO public.transferencias (id_transaccion,num_cta,cedula_cliente,fecha,monto,estado,cod_banco_origen,cod_banco_destino,num_cta_destino) VALUES
+('74b077a6-5b58-4f22-9f64-f145ddbfc997','12345','4800005','2022-07-14',500,'rechazado','BNFAPYPA','BSUDPYPX','12345678'),
+('31be847b-2f30-4090-974d-cb8050b1aa59','12345','4800005','2022-07-14',400,'pendiente','BNFAPYPA','IIFAPYPA','12345678'),
+('1a34ad71-0a3e-47ab-948c-4fd1ab05e9c7','12345','4800005','2022-07-17',500,'pendiente','FAMIPYPA','BNFAPYPA','12345678'),
+('397f491a-3872-4ff8-8786-135e25030312','123456','4800005','2022-07-17',1000,'rechazado','FAMIPYPA','BNFAPYPA','12345'),
+('57443fa3-4ecc-49f1-8c28-e08db3b2ae0b','123456','4800005','2022-07-18',400000,'pendiente','BNFAPYPA','BSUDPYPX','12345');

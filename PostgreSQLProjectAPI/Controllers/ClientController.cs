@@ -18,7 +18,7 @@ namespace PostgresWebAPI.Controllers
             _clientRepository = clientRepository;
         }
 
-        [HttpGet("{x}")]
+        [HttpGet]
         public async Task<IActionResult> GetAllClients()
         {
             return Ok(await _clientRepository.getAllClients());
@@ -70,8 +70,16 @@ namespace PostgresWebAPI.Controllers
             };
 
 
-            validator.ValidateAndThrow(clientIsValid);
 
+            var clientValidator = validator.Validate(clientIsValid);
+
+            if (!clientValidator.IsValid)
+            {
+                foreach (var error in clientValidator.Errors)
+                {
+                    return BadRequest($"Error en el servicio: {error.ErrorMessage}. Campo: {error.PropertyName}");
+                }
+            }
 
             try
             {
@@ -108,9 +116,15 @@ namespace PostgresWebAPI.Controllers
                 nombre_apellido = clientParam.nombre_apellido
             };
 
+            var clientValidator = validator.Validate(clientIsValid);
 
-            validator.ValidateAndThrow(clientIsValid);
-
+            if (!clientValidator.IsValid)
+            {
+                foreach (var error in clientValidator.Errors)
+                {
+                    return BadRequest($"Error en el servicio: {error.ErrorMessage}. Campo: {error.PropertyName}");
+                }
+            }
 
             try
             {

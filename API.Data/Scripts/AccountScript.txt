@@ -1,0 +1,38 @@
+﻿-- Table: public.cuentas
+
+-- DROP TABLE IF EXISTS public.cuentas;
+
+CREATE TABLE IF NOT EXISTS public.cuentas
+(
+    id_cta character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    num_cta character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    moneda character varying(3) COLLATE pg_catalog."default" NOT NULL,
+    saldo numeric NOT NULL,
+    cedula_cliente character varying(15) COLLATE pg_catalog."default" NOT NULL,
+    cod_banco character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT cuenta_pkey PRIMARY KEY (id_cta),
+    CONSTRAINT cuenta_num_cta_key UNIQUE (num_cta),
+    CONSTRAINT cuenta_cedula_cliente_fkey FOREIGN KEY (cedula_cliente)
+        REFERENCES public.clientes (cedula) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT cuenta_cod_banco_fkey FOREIGN KEY (cod_banco)
+        REFERENCES public.bancos (codigo_banco) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.cuentas
+    OWNER to postgres;
+
+
+
+-------------------------------------------DATA--------------------------------------
+INSERT INTO public.cuentas (id_cta,num_cta,moneda,saldo,cedula_cliente,cod_banco) VALUES
+('d40c3d88-5892-4dff-b9e1-bd0807d4afcd','12345','usd',440000,'4800005','BNFAPYPA'),
+('81ab1194-2efb-43a5-9020-11d56b832c32','12345678','pyg',4000,'4800005','BNFAPYPA'),
+('afed5e62-e377-4473-9520-b86d0916c68f','123456789310','usd',44,'4800005','jejejeje'),
+('1f1cd428-6870-499d-a265-bdac1196e3d9','123456','arg',1000000,'4800005','BNFAPYPA');
+

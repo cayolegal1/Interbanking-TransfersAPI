@@ -89,12 +89,6 @@ namespace API.Data.Repositories.Accounts
             var db = dbConnection();
             string query = @"SELECT * FROM cuentas WHERE id_cta = @id";
             var response = await db.QueryFirstOrDefaultAsync<Account>(query, new {id});
-
-            if(response == null)
-            {
-
-                throw new Exception("Cuenta no existente");
-            }
             return response;
         }
 
@@ -109,7 +103,6 @@ namespace API.Data.Repositories.Accounts
             saldo = @saldo
             WHERE id_cta = @id_cta";
 
-            var accountValidation = await searchAccountByNumber(accountInfo.num_cta);
 
             var accountValidation2 = await getAccountByID(accountInfo.id_cta);
 
@@ -118,10 +111,6 @@ namespace API.Data.Repositories.Accounts
                 throw new Exception("Cuenta no existente");
             }
 
-            if(accountValidation != null)
-            {
-                throw new Exception("Cuenta ya se encuentra registrada");
-            }
 
             var response = await db.ExecuteAsync(
             query,

@@ -13,9 +13,9 @@ namespace API.Data.Repositories.Banks
     {
         public BankValidator()
         {
-            RuleFor(bank => bank.codigo_banco).NotNull().Length(8).NotEmpty();
-            RuleFor(bank => bank.nombre_banco).NotNull().NotEmpty().MaximumLength(40).MinimumLength(5);
-            RuleFor(bank => bank.direccion).NotNull().NotEmpty().MaximumLength(50);
+            RuleFor(bank => bank.codigo_banco).NotNull().Length(8).NotEmpty().WithState(state => "400");
+            RuleFor(bank => bank.nombre_banco).NotNull().NotEmpty().MaximumLength(40).MinimumLength(5).WithErrorCode("400");
+            RuleFor(bank => bank.direccion).NotNull().NotEmpty().MaximumLength(50).WithErrorCode("400");
         }
     }
 }

@@ -96,10 +96,6 @@ namespace API.Data.Repositories.Banks
 
             var response = await db.QueryFirstOrDefaultAsync<Bank>(query, new {codigo_banco});
 
-            if(response == null)
-            {
-                throw new Exception("Banco no existe");
-            }
 
             return response;
         }
