@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace API.Data.Repositories.Accounts
 {
     public class AccountValidator: AbstractValidator<Account>
-    {
+    {   
         public AccountValidator()
         {
             RuleFor(account => account.moneda).NotEmpty().NotNull().MaximumLength(3).MinimumLength(3);

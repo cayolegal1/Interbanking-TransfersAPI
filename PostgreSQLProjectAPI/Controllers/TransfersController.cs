@@ -2,6 +2,7 @@
 using API.Data.Repositories.Transfers;
 using API.Data.Repositories.Accounts;
 using API.Model;
+using FluentValidation;
 
 namespace PostgreSQLProjectAPI.Controllers
 {
@@ -16,6 +17,9 @@ namespace PostgreSQLProjectAPI.Controllers
         {
             _transferRepository = transferRepository;
         }
+
+        TransfersValidator validator = new TransfersValidator();
+        UpdateValidator updateValidator = new UpdateValidator();
 
         [HttpGet]
         public async Task<IActionResult> getAllTransfers()
@@ -70,15 +74,26 @@ namespace PostgreSQLProjectAPI.Controllers
 
             };
 
+            validator.ValidateAndThrow(newTransfer);
+
             var newClient = await _transferRepository.MakeTransfer(newTransfer);
 
             return Created("Done", transferInfo);
         }
 
 
-        [HttpPatch]
+        [HttpPatch("updateState")]
         public async Task<IActionResult> changeTransferState([FromBody] Transfer transferInfo)
-        {   
+        {
+
+            new Transfer()
+            {
+                estado = transferInfo.estado,
+
+            };
+
+            updateValidator.ValidateAndThrow(transferInfo);
+
             try
             {
             var request = await _transferRepository.updateTransferState(transferInfo);
